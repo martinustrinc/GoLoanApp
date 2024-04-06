@@ -1,16 +1,34 @@
 package table
 
-import "time"
+import (
+	"database/sql"
+	"time"
+)
 
-type AccountLoan struct {
-	Month                int       `json:"bulan"`
-	StartDate            time.Time `json:"tanggal_mulai"`
-	PrincipalInstallment float64   `json:"angsuran_pokok"`
-	InterestInstallment  float64   `json:"angsuran_bunga"`
-	TotalInstallment     float64   `json:"total_angsuran"`
-	RemainingInstallment float64   `json:"sisa_angsuran"`
-	CreatedBy            int64     `json:"created_by"`
-	UpdatedBy            int64     `json:"updated_by"`
+type AccountLoanStruct struct {
+	Month                int
+	StartDate            time.Time
+	PrincipalInstallment float64
+	InterestInstallment  float64
+	TotalInstallment     float64
+	RemainingInstallment float64
+	CreatedBy            int64
+	UpdatedBy            int64
 	CreatedAt            time.Time
 	UpdatedAt            time.Time
+}
+
+type AccountLoan struct {
+	ID                   sql.NullInt64
+	Month                sql.NullInt64
+	StartDate            sql.NullTime
+	PrincipalInstallment sql.NullString
+	InterestInstallment  sql.NullString
+	TotalInstallment     sql.NullString
+	RemainingInstallment sql.NullString
+	CreatedBy            sql.NullInt64
+	UpdatedBy            sql.NullInt64
+	CreatedAt            sql.NullTime
+	UpdatedAt            sql.NullTime
+	Deleted              sql.NullBool
 }

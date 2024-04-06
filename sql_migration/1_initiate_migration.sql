@@ -22,7 +22,7 @@ CREATE TABLE "user" (
     updated_at      TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     deleted         BOOLEAN                     DEFAULT FALSE,
     CONSTRAINT pk_user_id PRIMARY KEY (id),
-    CONSTRAINT uq_user_userid UNIQUE (client_id)
+    CONSTRAINT uq_user_userid UNIQUE (user_id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS role_pkey_seq;

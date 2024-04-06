@@ -1,8 +1,10 @@
 package main
 
 import (
+	"GoLoanApp/config"
 	"GoLoanApp/router"
 	"database/sql"
+	"fmt"
 	"github.com/gobuffalo/packr/v2"
 	migrate "github.com/rubenv/sql-migrate"
 	"log"
@@ -15,14 +17,14 @@ var logger *log.Logger
 
 func main() {
 	// Database connection
-	//dbSchemaParam := "loan_app"
-	//dbConnectionAddress := "user=postgres password=kopinikmat dbname=postgres sslmode=disable host=localhost port=5432"
-	//dbMaxOpenConnection := 500
-	//dbMaxIdleConnection := 100
-	//dBConnection := config.GetDbConnection(dbSchemaParam, dbConnectionAddress, dbMaxOpenConnection, dbMaxIdleConnection)
+	dbSchemaParam := "loan_app"
+	dbConnectionAddress := "user=postgres password=kopinikmat dbname=postgres sslmode=disable host=localhost port=5432"
+	dbMaxOpenConnection := 500
+	dbMaxIdleConnection := 100
+	dBConnection := config.GetDbConnection(dbSchemaParam, dbConnectionAddress, dbMaxOpenConnection, dbMaxIdleConnection)
 
 	// call sql migration
-	//dbMigrate(dBConnection)
+	dbMigrate(dBConnection)
 
 	// call api controller
 	router.ApiController()
@@ -38,10 +40,12 @@ func dbMigrate(dBConnection *sql.DB) {
 			logger.Println(err.Error())
 			os.Exit(3)
 		} else {
-			logger.Println("Applied " + strconv.Itoa(n) + " migrations!")
+			//logger.Println("Applied " + strconv.Itoa(n) + " migrations!")
+			fmt.Println("Applied " + strconv.Itoa(n) + " migrations!")
 		}
 	} else {
 		logger.Println("empty database")
+		fmt.Println("empty database")
 		os.Exit(3)
 	}
 }

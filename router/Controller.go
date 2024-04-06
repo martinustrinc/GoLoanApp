@@ -35,15 +35,15 @@ func ApiController() {
 		// Validation input
 		errs := services.ValidateRequestCreateLoanAccount(request)
 		if errs != "" {
-			logger.Println("Invalid Input Data, Data must higher than 0!")
-			http.Error(w, "Invalid Input Data, Data must higher than 0!", http.StatusBadRequest)
+			logger.Println(errs)
+			http.Error(w, errs, http.StatusBadRequest)
 		}
 
 		// Calculate Installment
 		request.Installment, err = services.CalculateInstallment(request)
 		if err != nil {
 			logger.Println(err)
-			http.Error(w, "Kesalahan saat menghitung angsuran", http.StatusInternalServerError)
+			http.Error(w, "Error Calculate Installment", http.StatusInternalServerError)
 			return
 		}
 

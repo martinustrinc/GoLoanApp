@@ -5,7 +5,7 @@ import (
 	"GoLoanApp/model/table"
 )
 
-func CalculateInstallment(request dtoIn.LoanRequest) (tableInstallment []table.AccountLoan, err error) {
+func CalculateInstallment(request dtoIn.LoanRequest) (tableInstallment []table.AccountLoanStruct, err error) {
 	//installment := make([]dtoIn.AccountLoan, request.LoanDuration)
 	//date := time.Time{}
 
@@ -27,7 +27,7 @@ func CalculateInstallment(request dtoIn.LoanRequest) (tableInstallment []table.A
 		totalInstallment := monthlyPrincipal + interestRate
 
 		// Add data ke table Account
-		tableInstallment = append(tableInstallment, table.AccountLoan{
+		tableInstallment = append(tableInstallment, table.AccountLoanStruct{
 			Month:                i,
 			PrincipalInstallment: monthlyPrincipal,
 			InterestInstallment:  interestRate,
