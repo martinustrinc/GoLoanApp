@@ -21,7 +21,12 @@ func main() {
 	dbConnectionAddress := "user=postgres password=kopinikmat dbname=postgres sslmode=disable host=localhost port=5432"
 	dbMaxOpenConnection := 500
 	dbMaxIdleConnection := 100
-	dBConnection := config.GetDbConnection(dbSchemaParam, dbConnectionAddress, dbMaxOpenConnection, dbMaxIdleConnection)
+	dBConnection, err := config.GetDbConnection(dbSchemaParam, dbConnectionAddress, dbMaxOpenConnection, dbMaxIdleConnection)
+
+	if err != nil {
+		fmt.Println("Error Connection Database")
+		os.Exit(3)
+	}
 
 	// call sql migration
 	dbMigrate(dBConnection)

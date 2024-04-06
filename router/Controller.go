@@ -79,7 +79,7 @@ func ApiController() {
 	// Run server
 	port := os.Getenv("PORT")
 	if port == "" {
-		port = "8090"
+		port = "8091"
 	}
 	logger.Println("Server is running on port " + port + "...")
 	log.Fatal(http.ListenAndServe(":"+port, handler))
