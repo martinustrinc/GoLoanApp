@@ -1,0 +1,10 @@
+curl --request POST \
+  --url 'http://localhost:8090/v1/app/createLoanAccount?=' \
+  --header 'Content-Type: application/json' \
+  --header 'User-Agent: insomnia/8.6.1' \
+  --data '{
+	"plafond" : 1000000,
+	"lama_pinjaman" : 12,
+	"suku_bunga" : 4.5,
+	"tanggal_mulai" : "2024-04-06T00:00:00Z"
+}'

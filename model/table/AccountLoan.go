@@ -2,20 +2,14 @@ package table
 
 import (
 	"database/sql"
-	"time"
 )
 
 type AccountLoanStruct struct {
-	Month                int
-	StartDate            time.Time
-	PrincipalInstallment float64
-	InterestInstallment  float64
-	TotalInstallment     float64
-	RemainingInstallment float64
-	CreatedBy            int64
-	UpdatedBy            int64
-	CreatedAt            time.Time
-	UpdatedAt            time.Time
+	Month                int     `json:"bulan"`
+	PrincipalInstallment float64 `json:"angsuran_pokok"`
+	InterestInstallment  float64 `json:"angsuran_bunga"`
+	TotalInstallment     float64 `json:"total_angsuran"`
+	RemainingInstallment float64 `json:"sisa_pinjaman"`
 }
 
 type AccountLoan struct {

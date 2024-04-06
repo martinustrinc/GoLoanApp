@@ -5,6 +5,6 @@ import (
 )
 
 type LoanResponse struct {
-	AccountCode string              `json:"kode_rekening"`
-	AccountLoan []table.AccountLoan `json:"tabel_angsuran"`
+	AccountCode string                    `json:"kode_rekening"`
+	AccountLoan []table.AccountLoanStruct `json:"tabel_angsuran"`
 }

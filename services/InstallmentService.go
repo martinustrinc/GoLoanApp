@@ -16,7 +16,7 @@ func CalculateInstallment(request dtoIn.LoanRequest) (tableInstallment []table.A
 	// Calculate AccountLoan
 	//installment := request.CreditLimit * (monthlyInterest * math.Pow(1+monthlyInterest, float64(request.LoanDuration))) / (math.Pow(1+monthlyInterest, float64(request.LoanDuration)) - 1)
 
-	for i := 0; i < request.LoanDuration; i++ {
+	for i := 1; i <= request.LoanDuration; i++ {
 		// Calculate Remaining Loan
 		remainingInstallment := request.CreditLimit - float64(i-1)*monthlyPrincipal
 
