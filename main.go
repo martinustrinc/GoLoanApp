@@ -22,7 +22,6 @@ func main() {
 	dbMaxOpenConnection := 500
 	dbMaxIdleConnection := 100
 	dBConnection, err := config.GetDbConnection(dbSchemaParam, dbConnectionAddress, dbMaxOpenConnection, dbMaxIdleConnection)
-
 	if err != nil {
 		fmt.Println("Error Connection Database")
 		os.Exit(3)
@@ -42,6 +41,7 @@ func dbMigrate(dBConnection *sql.DB) {
 	if dBConnection != nil {
 		n, err := migrate.Exec(dBConnection, "postgres", migrations, migrate.Up)
 		if err != nil {
+			fmt.Println("Error migrations!", err.Error())
 			logger.Println(err.Error())
 			os.Exit(3)
 		} else {

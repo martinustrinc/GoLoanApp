@@ -25,7 +25,7 @@ func GetDbConnection(defaultSchema string, connectionString string, maxOpenConne
 	if !schemaExists(db, defaultSchema) {
 		// If the schema doesn't exist, create it
 		if err := createSchema(db, defaultSchema); err != nil {
-			db.Close()
+			_ = db.Close()
 			return nil, err
 		}
 	}
